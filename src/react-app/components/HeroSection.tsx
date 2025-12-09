@@ -19,13 +19,13 @@ export default function HeroSection() {
   return (
     <main className="relative bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 text-gray-900 overflow-hidden" role="banner">
       {/* Background Pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-50"
         style={{
           backgroundImage: `url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232D52A0" fill-opacity="0.05"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')`
         }}
       />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left Content */}
@@ -64,24 +64,34 @@ export default function HeroSection() {
 
           {/* Right Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <button
-                onClick={openImageModal}
-                className="group focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-2xl"
-                aria-label="Click to view full integration diagram"
-              >
-                <img
-                  src="https://mocha-cdn.com/01990be7-16b6-7d5d-9cf3-33af3b0ca06a/ChannelConnect.jpg"
-                  alt="Integration diagram showing Avetti Channel Connect ecosystem"
-                  className="w-[576px] h-auto rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-lg text-sm font-medium">
-                    Click to enlarge
-                  </span>
-                </div>
-              </button>
+            <div className="flex flex-col items-center">
+              <div className="relative">
+                <button
+                  onClick={openImageModal}
+                  className="group focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-2xl"
+                  aria-label="Click to view full integration diagram"
+                >
+                  <img
+                    src="https://mocha-cdn.com/01990be7-16b6-7d5d-9cf3-33af3b0ca06a/ChannelConnect.jpg"
+                    alt="Integration diagram showing Avetti Channel Connect ecosystem"
+                    className="w-[576px] h-auto rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-lg text-sm font-medium">
+                      Click to enlarge
+                    </span>
+                  </div>
+                </button>
+              </div>
+              <div className="w-full max-w-[576px] mt-4 text-center">
+                <h3 className="text-lg font-semibold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent mb-1 inline-block">
+                  The Complete Integration Ecosystem
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  See how everything connects seamlessly in our unified platform
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -89,7 +99,7 @@ export default function HeroSection() {
 
       {/* Image Modal with Scroll */}
       {isImageModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={closeImageModal}
         >
@@ -104,7 +114,7 @@ export default function HeroSection() {
             </button>
 
             {/* Scrollable Image Container */}
-            <div 
+            <div
               className="w-full h-full overflow-auto p-8 pt-16"
               onClick={(e) => e.stopPropagation()}
             >
