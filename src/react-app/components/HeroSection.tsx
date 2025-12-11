@@ -1,19 +1,11 @@
 import { useState } from 'react';
-import { ArrowRight, ShoppingBag, X } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Store, X } from 'lucide-react';
 
 export default function HeroSection() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const openImageModal = () => {
-    setIsImageModalOpen(true);
-  };
-
-  const closeImageModal = () => {
-    setIsImageModalOpen(false);
   };
 
   return (
@@ -62,71 +54,46 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Right Image / Diagram */}
           <div className="flex justify-center lg:justify-end">
-            <div className="flex flex-col items-center">
-              <div className="relative">
-                <button
-                  onClick={openImageModal}
-                  className="group focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-2xl"
-                  aria-label="Click to view full integration diagram"
-                >
-                  <img
-                    src="https://mocha-cdn.com/01990be7-16b6-7d5d-9cf3-33af3b0ca06a/ChannelConnect.jpg"
-                    alt="Integration diagram showing Avetti Channel Connect ecosystem"
-                    className="w-[576px] h-auto rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-lg text-sm font-medium">
-                      Click to enlarge
-                    </span>
-                  </div>
-                </button>
+            <div className="relative w-full max-w-[500px] aspect-square lg:aspect-[4/3] mx-auto select-none pointer-events-none lg:pointer-events-auto">
+
+              {/* Connecting Lines (SVG Layer) */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+                {/* Line: Top to Left */}
+                <line x1="50%" y1="20%" x2="20%" y2="80%" stroke="#94a3b8" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" />
+                {/* Line: Top to Right */}
+                <line x1="50%" y1="20%" x2="80%" y2="80%" stroke="#94a3b8" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" />
+                {/* Line: Left to Right */}
+                <line x1="20%" y1="80%" x2="80%" y2="80%" stroke="#94a3b8" strokeWidth="3" strokeDasharray="6 6" className="animate-pulse" />
+              </svg>
+
+              {/* Node 1: ACC (Top Center) */}
+              <div className="absolute top-[5%] left-1/2 -translate-x-1/2 w-40 h-40 bg-white rounded-full shadow-2xl border-4 border-blue-500 flex flex-col items-center justify-center p-4 text-center z-10 transform hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl font-black text-blue-700 mb-1">ACC</div>
+                <div className="text-xs font-bold text-gray-800 leading-tight">Avetti<br />Channel<br />Connect</div>
               </div>
-              <div className="w-full max-w-[576px] mt-4 text-center">
-                <h3 className="text-lg font-semibold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent mb-1 inline-block">
-                  The Complete Integration Ecosystem
-                </h3>
-                <p className="text-gray-500 text-sm">
-                  See how everything connects seamlessly in our unified platform
-                </p>
+
+              {/* Node 2: Shopify (Bottom Left) */}
+              <div className="absolute bottom-[5%] left-[5%] w-36 h-36 bg-white rounded-full shadow-xl border-4 border-[#95BF47] flex flex-col items-center justify-center p-3 text-center z-10 transform hover:scale-110 transition-transform duration-300">
+                <div className="bg-[#95BF47] p-2 rounded-full mb-2">
+                  <ShoppingBag className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-xs font-bold text-gray-800 leading-tight">Your Shopify<br />Store</div>
               </div>
+
+              {/* Node 3: Suppliers (Bottom Right) */}
+              <div className="absolute bottom-[5%] right-[5%] w-36 h-36 bg-white rounded-full shadow-xl border-4 border-indigo-500 flex flex-col items-center justify-center p-3 text-center z-10 transform hover:scale-110 transition-transform duration-300">
+                <div className="bg-indigo-500 p-2 rounded-full mb-2">
+                  <Store className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-xs font-bold text-gray-800 leading-tight">External<br />Suppliers</div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-
-      {/* Image Modal with Scroll */}
-      {isImageModalOpen && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={closeImageModal}
-        >
-          <div className="relative w-full h-full max-w-6xl max-h-[85vh] bg-white rounded-2xl">
-            {/* Close Button */}
-            <button
-              onClick={closeImageModal}
-              className="absolute top-4 right-4 z-20 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-lg"
-              aria-label="Close image popup"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Scrollable Image Container */}
-            <div
-              className="w-full h-full overflow-auto p-8 pt-16"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src="https://mocha-cdn.com/01990be7-16b6-7d5d-9cf3-33af3b0ca06a/ChannelConnect.jpg"
-                alt="Full integration diagram showing how Avetti Channel Connect links Shopify stores with suppliers, resellers, influencers, payment systems, logistics providers, and AI automation tools"
-                className="w-full h-auto rounded-xl shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
